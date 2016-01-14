@@ -1,18 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <link rel="stylesheet" href="/css/normalize.css?app=skills">
-  <link rel="stylesheet" href="/css/application.css?app=skills">
+  <link rel="stylesheet" href="/css/normalize.css">
+  <link rel="stylesheet" href="/css/application.css">
+  <link rel="stylesheet" href="/css/bootstrap.css">
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  <script src="/js/application.js?app=skills"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script src="/js/application.js"></script>
+  <script src="/js/jquery.modal.min.js" type="text/javascript" charset="utf-8"></script>
+  <link rel="stylesheet" href="/css/jquery.modal.css" type="text/css" media="screen" />
 
   <title></title>
 </head>
 <nav>
-  <center><br><a href="/">Home</a> | <a href="/register">Register</a> | <a href="/login">Login</a> | <a href="/logout">Logout</a> | <a href="/secret">secret area! shhhh</a></center>
+  <%= erb :_nav, layout: false %>
 </nav>
 <body>
+  <% if flash[:notice] %>
+    <center><p class="alert alert-success"><%= flash[:notice] %></p></center>
+  <% end %>
+  <% if flash[:error] %>
+    <center><p class="alert alert-success"><%= flash[:error] %></p></center>
+  <% end %>
+  <div id="login-box" style="display: none">
+    <%= erb :_login_providers, layout: false %>
+  </div>
+  <div id="login-form" style="display: none">
+    <%= erb :_login_form, layout: false %>
+  </div>
+  <div id="registration-form" style="display: none">
+    <%= erb :"user/_registration_form", layout: false %>
+  </div>
   <%= yield %>
 </body>
 </html>

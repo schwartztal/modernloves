@@ -116,11 +116,23 @@ namespace :db do
   task :version do
     puts "Current version: #{ActiveRecord::Migrator.current_version}"
   end
+
+  desc "Initialize empty database"
+  task :init do
+    system "rake db:create && rake db:migrate && rake db:seed"
+    puts "Done."
+  end
+
+  desc "Reinitialize empty database"
+  task :reinit do
+    system "rake db:drop && rake db:create && rake db:migrate && rake db:seed"
+    puts "Done."
+  end
 end
 
 desc 'Start IRB with application environment loaded'
 task "console" do
-  exec "irb -r./config/environment"
+  exec "pry -r./config/environment"
 end
 
 desc "Run the specs"
