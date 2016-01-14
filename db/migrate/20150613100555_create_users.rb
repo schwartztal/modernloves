@@ -6,14 +6,18 @@ class CreateUsers < ActiveRecord::Migration
   ###############################################
   def change
     create_table :users do |t|
-      t.string :full_name
       t.string :first_name
+      t.string :middle_name
       t.string :last_name
+      t.string :nickname
       t.string :email, :null => false
       t.string :address
       t.string :city
       t.string :state
       t.integer :zip
+      t.string :gender
+      t.string :phone
+      t.date :birthday
       t.string :password_hash
       t.string :avatar_url
       t.references :referrer, index: true

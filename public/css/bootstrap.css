@@ -1929,6 +1929,10 @@ pre code {
   .col-sm-offset-1 {
     margin-left: 8.33333333%;
   }
+  .col-sm-offset-1-custom {
+    margin-left: 4.166666%;
+    margin-right: 4.166666%;
+  }
   .col-sm-offset-0 {
     margin-left: 0;
   }

@@ -11,7 +11,7 @@
   <!-- Bootstrap core CSS -->
   <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" integrity="sha256-7s5uDGW3AHqw6xtJmNNtr+OBRJUlgkNJEo78P4b0yRw= sha512-nNo+yCHEyn0smMxSswnf/OnX6/KwJuZTlNZBjauKhTK0c+zT+q5JOCx0UFhXQ6rJR9jg6Es8gPuD2uZcYDLqSw==" crossorigin="anonymous">
 
-  <!-- <link  href="/css/application.css" rel="stylesheet"> -->
+  <link  href="/css/application.css" rel="stylesheet">
   <link  href="/css/jquery.modal.css" rel="stylesheet" type="text/css" media="screen" />
 </head>
 <body>
@@ -19,14 +19,21 @@
 
   <%= erb :_nav, layout: false %>
 
-<!-- Notifications of success -->
-  <% if flash[:notice] %>
-    <center><p class="alert alert-success"><%= flash[:notice] %></p></center>
-  <% end %>
-<!-- Notifications of error -->
-  <% if flash[:error] %>
-    <center><p class="alert alert-success"><%= flash[:error] %></p></center>
-  <% end %>
+<!--Jumbotron - the main display -->
+<div class="jumbotron">
+  <div class="container">
+    <!-- Notifications of success -->
+      <% if flash[:notice] %>
+        <center><p class="alert alert-success"><%= flash[:notice] %></p></center>
+              <% end %>
+    <!-- Notifications of error -->
+      <% if flash[:error] %>
+        <center><p class="alert alert-success"><%= flash[:error] %></p></center>
+      <% end %>
+  </div>
+</div>
+
+<!-- Login box modal - hidden by default -->
   <div id="login-box" style="display: none">
     <%= erb :_login_providers, layout: false %>
   </div>
@@ -36,6 +43,8 @@
   <div id="registration-form" style="display: none">
     <%= erb :"user/_registration_form", layout: false %>
   </div>
+
+
   <%= yield %>
 
   <!--  Core JavaScript
